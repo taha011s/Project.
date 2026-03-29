@@ -12,9 +12,9 @@ export const getBoards = async (_req: Request, res: Response) => {
     });
 
     return res.json(boards);
-  } catch (error) {
+  } catch (error: any) {
     console.error("getBoards failed", error);
-    return res.status(500).json({ message: "Failed to fetch boards" });
+    return res.status(500).json({ message: "Failed to fetch boards", error: error.message, stack: error.stack });
   }
 };
 
